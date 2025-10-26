@@ -3,8 +3,7 @@ from flask import current_app
 
 def enviar_email(prontuario, nome, usuario):
     """
-    Envia e-mail via API do Mailgun para o endereço do professor
-    e o e-mail institucional configurado no config.py
+    Envia e-mail via API do Mailgun para o professor e e-mail institucional.
     """
     api_key = current_app.config['MAILGUN_API_KEY']
     domain = current_app.config['MAILGUN_DOMAIN']
@@ -14,14 +13,13 @@ def enviar_email(prontuario, nome, usuario):
 
     subject = f'Novo usuário cadastrado: {usuario}'
     body = f"""
-    Novo cadastro realizado!
+    ✅ Novo cadastro enviado!
 
     📘 Prontuário: {prontuario}
     👤 Nome: {nome}
-    🧾 Usuário: {usuario}
+    🧾 Usuário cadastrado: {usuario}
     """
 
-    # Envia para os dois destinatários
     for destinatario in [admin_email, institucional]:
         requests.post(
             f'https://api.mailgun.net/v3/{domain}/messages',
