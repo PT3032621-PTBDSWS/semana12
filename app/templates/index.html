@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1 class="mb-4 text-center">Cadastro de Usuário</h1>
-  <form method="POST">
-    <div class="mb-3">
-      <label class="form-label">Usuário</label>
-      <input type="text" name="usuario" class="form-control" placeholder="Digite o usuário cadastrado" required>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Enviar Cadastro</button>
-  </form>
+  <div class="text-start">
+    <h1 class="mb-3">Hello, Gustavo Maximo Da Silva!</h1>
+    <p class="text-muted">Pleased to meet you!</p>
+
+    <hr>
+
+    <form method="POST" class="mt-4">
+      <div class="mb-3">
+        <label for="name" class="form-label fw-bold">What is your name?</label>
+        <input
+          type="text"
+          id="name"
+          name="usuario"
+          class="form-control"
+          placeholder=""
+          required
+        >
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 {% endblock %}
