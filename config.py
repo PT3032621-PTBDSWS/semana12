@@ -4,16 +4,18 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     
-    # Configuração do Mailgun
+    # Configurações do Mailgun
     MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
     MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN')
     MAILGUN_FROM = os.environ.get('MAILGUN_FROM')
 
-    # E-mails de destino fixos
+    # E-mails de destino
     ADMIN_EMAIL = 'flaskaulasweb@zohomail.com'
-    EMAIL_INSTITUCIONAL = 'gustavo.maximo@aluno.ifsp.edu.br'
+    EMAIL_INSTITUCIONAL = os.environ.get('EMAIL_INSTITUCIONAL') 
 
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    PRONTUARIO_FIXO = 'PT3032621'
+    NOME_FIXO = 'Gustavo Máximo Da Silva'
 
     @staticmethod
     def init_app(app):
@@ -22,7 +24,6 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
 
 config = {
